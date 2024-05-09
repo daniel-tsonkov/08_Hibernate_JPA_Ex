@@ -21,5 +21,7 @@ public class _04_RichEmployeesFirstName {
         System.out.println(join);
 
         entityManager.getTransaction().commit();
+
+        entityManager.close();
     }
 }
