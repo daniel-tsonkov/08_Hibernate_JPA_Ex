@@ -20,6 +20,17 @@ public class _02_ChangeCasing {
                 createQuery("SELECT t FROM Town t", Town.class);
         List<Town> resultList = from_town.getResultList();
 
+        for (Town town : resultList) {
+            String name = town.getName();
+
+            if (name.length() <= 5) {
+                String toUper = name.toUpperCase();
+                town.setName(toUper);
+
+                entityManager.persist(town);
+            }
+        }
+
         entityManager.getTransaction().commit();
     }
 }
