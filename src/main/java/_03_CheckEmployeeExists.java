@@ -19,14 +19,18 @@ public class _03_CheckEmployeeExists {
         Scanner scanner = new Scanner(System.in);
         String[] searchFor = scanner.nextLine().split(" ");
 
-        Employee result = entityManager
-                .createQuery("SELECT e FROM Employee e WHERE e.firstName = :first_name AND e.lastName = :last_name",
-                        Employee.class)
+        Long employeeCount = entityManager
+                .createQuery("SELECT COUNT(e) FROM Employee e WHERE e.firstName = :first_name AND e.lastName = :last_name",
+                        Long.class)
                 .setParameter("first_name", searchFor[0])
                 .setParameter("last_name", searchFor[1])
                 .getSingleResult();
 
-        System.out.println(result);
+        if (employeeCount > 0) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
 
         entityManager.getTransaction().commit();
     }
