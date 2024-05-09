@@ -1,3 +1,4 @@
+import entities.Employee;
 import entities.Town;
 
 import javax.persistence.EntityManager;
@@ -5,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Scanner;
 
 public class _03_CheckEmployeeExists {
     public static void main(String[] args) {
@@ -14,22 +16,17 @@ public class _03_CheckEmployeeExists {
         EntityManager entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
 
-        //Town town = entityManager.find(Town.class, 1);
-        //System.out.println(town);
-        Query from_town = entityManager.
-                createQuery("SELECT t FROM Town t", Town.class);
-        List<Town> resultList = from_town.getResultList();
+        Scanner scanner = new Scanner(System.in);
+        String[] searchFor = scanner.nextLine().split(" ");
 
-        for (Town town : resultList) {
-            String name = town.getName();
+        Employee result = entityManager
+                .createQuery("SELECT e FROM Employee e WHERE e.firstName = :first_name AND e.lastName = :last_name",
+                        Employee.class)
+                .setParameter("first_name", searchFor[0])
+                .setParameter("last_name", searchFor[1])
+                .getSingleResult();
 
-            if (name.length() <= 5) {
-                String toUper = name.toUpperCase();
-                town.setName(toUper);
-
-                entityManager.persist(town);
-            }
-        }
+        System.out.println(result);
 
         entityManager.getTransaction().commit();
     }
