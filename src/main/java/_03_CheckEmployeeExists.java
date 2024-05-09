@@ -1,11 +1,7 @@
-import entities.Employee;
-import entities.Town;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import java.util.List;
 import java.util.Scanner;
 
 public class _03_CheckEmployeeExists {
