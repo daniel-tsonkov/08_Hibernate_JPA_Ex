@@ -3,7 +3,8 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bikes")
+//@Table(name = "bikes")
+@DiscriminatorValue(value = "bike")
 public class Bike extends Vehicle{
     private static final String BIKE_TYPE = "Bike";
 

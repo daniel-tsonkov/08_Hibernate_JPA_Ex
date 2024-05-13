@@ -1,10 +1,12 @@
 package entities;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "cars")
+//@Table(name = "cars")
+@DiscriminatorValue(value = "car")
 public class Car extends Vehicle{
     private static final String CAR_TYPE = "Car";
 
