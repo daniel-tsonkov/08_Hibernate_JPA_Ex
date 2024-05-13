@@ -12,10 +12,23 @@ public abstract class Vehicle {
     @Basic
     private String type;
 
-    public Vehicle() {}
+    public double getPrice() {
+        return this.price;
+    }
 
-    public Vehicle(String type) {
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    private double price;
+
+    public Vehicle(double price) {
+        this.price = price;
+    }
+
+    public Vehicle(String type, double price) {
         this.type = type;
+        this.price = price;
     }
 
     public int getId() {

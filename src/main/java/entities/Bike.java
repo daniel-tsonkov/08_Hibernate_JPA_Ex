@@ -8,7 +8,17 @@ import javax.persistence.Table;
 public class Bike extends Vehicle{
     private static final String BIKE_TYPE = "Bike";
 
-    public Bike() {
-        super(BIKE_TYPE);
+    public int getGearsCount() {
+        return this.gearsCount;
+    }
+
+    public void setGearsCount(int gearsCount) {
+        this.gearsCount = gearsCount;
+    }
+
+    private int gearsCount;
+
+    public Bike(int i) {
+        super(BIKE_TYPE, price);
     }
 }
