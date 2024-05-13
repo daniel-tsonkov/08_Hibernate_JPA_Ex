@@ -3,28 +3,23 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "vehicles")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "type")
 public abstract class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Basic
+    @Column(insertable = false, updatable = false)
     private String type;
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     private double price;
 
-    public Vehicle(double price) {
-        this.price = price;
-    }
+    private boolean sold;
+
+    public Vehicle() {}
 
     public Vehicle(String type, double price) {
         this.type = type;
@@ -32,7 +27,7 @@ public abstract class Vehicle {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {
@@ -40,10 +35,18 @@ public abstract class Vehicle {
     }
 
     public String getType() {
-        return this.type;
+        return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

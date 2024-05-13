@@ -4,6 +4,10 @@ import entities.Car;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 public class _08_Hibernate_JPA_Ex {
     public static void main(String[] args) {
@@ -16,8 +20,8 @@ public class _08_Hibernate_JPA_Ex {
         Bike bike = new Bike(21);
         Car car = new Car(5);
 
-        EntityManager.persist(bike);
-        EntityManager.persist(car);
+        entityManager.persist(bike);
+        entityManager.persist(car);
 
         entityManager.getTransaction().commit();
 

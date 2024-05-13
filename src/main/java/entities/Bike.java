@@ -1,12 +1,24 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "bikes")
 public class Bike extends Vehicle{
     private static final String BIKE_TYPE = "Bike";
+
+    private int gearsCount;
+
+    public Bike() {}
+
+    public Bike(int gearsCount) {
+        super(BIKE_TYPE, 250);
+        this.gearsCount = gearsCount;
+    }
+
+    public static String getBikeType() {
+        return BIKE_TYPE;
+    }
 
     public int getGearsCount() {
         return this.gearsCount;
@@ -14,11 +26,5 @@ public class Bike extends Vehicle{
 
     public void setGearsCount(int gearsCount) {
         this.gearsCount = gearsCount;
-    }
-
-    private int gearsCount;
-
-    public Bike(int i) {
-        super(BIKE_TYPE, price);
     }
 }
