@@ -1,5 +1,6 @@
 import entities.Bike;
 import entities.Car;
+import entities.Truck;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,9 +20,11 @@ public class _08_Hibernate_JPA_Ex {
 
         Bike bike = new Bike(21);
         Car car = new Car(5);
+        Truck truck = new Truck(25000, 40000);
 
         entityManager.persist(bike);
         entityManager.persist(car);
+        entityManager.persist(truck);
 
         entityManager.getTransaction().commit();
 

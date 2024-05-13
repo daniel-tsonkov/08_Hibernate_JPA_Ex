@@ -1,5 +1,8 @@
 package entities;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class TransportationVehicle extends Vehicle {
     private int loadCapacity;
 
