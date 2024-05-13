@@ -8,7 +8,7 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "type")
 public abstract class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
 
     @Basic
