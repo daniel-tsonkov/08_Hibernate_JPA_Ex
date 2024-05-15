@@ -22,7 +22,7 @@ public class _08_Hibernate_JPA_Ex {
         Car car = new Car(5);
         Truck truck = new Truck(25000, 40000);
 
-        entityManager.persist(bike);
+        entityManager.persist(bike);//update
         entityManager.persist(car);
         entityManager.persist(truck);
 
